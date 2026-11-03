@@ -1,0 +1,36 @@
+{
+  "nodes": [
+    {"id": "fetch-deps", "duration": 3},
+    {"id": "gen-code", "duration": 2},
+    {"id": "lint", "duration": 3},
+    {"id": "compile-core", "duration": 12},
+    {"id": "compile-cli", "duration": 6},
+    {"id": "compile-plugins", "duration": 9},
+    {"id": "unit-core", "duration": 8},
+    {"id": "unit-cli", "duration": 4},
+    {"id": "unit-plugins", "duration": 5},
+    {"id": "docs", "duration": 4},
+    {"id": "package", "duration": 3},
+    {"id": "e2e", "duration": 6},
+    {"id": "publish", "duration": 1}
+  ],
+  "edges": [
+    ["fetch-deps", "gen-code"],
+    ["fetch-deps", "lint"],
+    ["gen-code", "compile-core"],
+    ["compile-core", "compile-cli"],
+    ["compile-core", "compile-plugins"],
+    ["compile-core", "unit-core"],
+    ["compile-core", "docs"],
+    ["compile-cli", "unit-cli"],
+    ["compile-plugins", "unit-plugins"],
+    ["unit-core", "package"],
+    ["unit-cli", "package"],
+    ["unit-plugins", "package"],
+    ["compile-cli", "package"],
+    ["compile-plugins", "package"],
+    ["package", "e2e"],
+    ["e2e", "publish"],
+    ["docs", "publish"]
+  ]
+}
